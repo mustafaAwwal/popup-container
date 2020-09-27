@@ -1,0 +1,14 @@
+<div class="popup-container" [ngClass]="open ? 'open' : 'close'">
+  <button class="close-button" type="button">
+    <img
+      src="../../../assets/icons/closeicon.svg"
+      alt=""
+      width="15px"
+      height="15px"
+      (click)="setClose()"
+    />
+  </button>
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+</div>
