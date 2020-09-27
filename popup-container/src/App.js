@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { PopupContainer, SmallContent, LargeContent } from "./components";
+import "./App.css";
 
 function App() {
+  const [open, setOpen] = useState(false);
+  const [content, setContent] = useState("small");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button type="button" onClick={() => setOpen(!open)}>
+        Toggle Container
+      </button>
+      <button type="button" onClick={() => setContent("small")}>
+        Small Content
+      </button>
+      <button type="button" onClick={() => setContent("large")}>
+        LargeContent
+      </button>
+
+      <PopupContainer open={open} setClose={() => setOpen(false)}>
+        {content === "small" && <SmallContent />}
+        {content === "large" && <LargeContent />}
+      </PopupContainer>
     </div>
   );
 }
